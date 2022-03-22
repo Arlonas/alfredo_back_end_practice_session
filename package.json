@@ -1,0 +1,19 @@
+{
+  "name": "alfredo_back_end_practice_session",
+  "version": "1.0.0",
+  "description": "Practice Session ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon ."
+  },
+  "author": "Alfredo",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "nanoid": "^3.3.1"
+  }
+}
