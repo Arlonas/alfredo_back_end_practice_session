@@ -119,6 +119,62 @@ const employeeControllers = {
     res.status(200).json({
       message: "Deleted employee"
     })
+  },
+  deleteAllEmployeeById: (req, res) => {
+    const employee = req.query.id
+    
+    employee.forEach(id => {
+      const findIndex = employeeDB.findIndex(val => {
+        return val.id == id
+      })
+  
+      if (findIndex == -1) {
+        res.status(404).json({
+          message: "Employee not found"
+        })
+        return
+      }
+  
+      employeeDB.splice(findIndex, 1)
+  
+    })
+    
+    res.status(200).json({
+      message: "Deleted employee"
+    })
+
+
+  },
+  editAllEmployeeById: (req, res) => {
+    const employee = req.query.id
+    console.log(req.query.id)
+    const editEmployeeData = req.body;
+    
+    employee.forEach(id => {
+      const findIndex = employeeDB.findIndex(val => {
+        return val.id == id
+      })
+  
+      if (findIndex == -1) {
+        res.status(404).json({
+          message: "Employee not found"
+        })
+        return
+      }
+        console.log(findIndex)
+      employeeDB[findIndex] = {
+        ...employeeDB[findIndex],
+        ...editEmployeeData
+      }
+    });
+    
+
+    res.status(200).json({
+      message: "Edited employee",
+      result: "done"
+    })
+    
+    
   }
 }
 
